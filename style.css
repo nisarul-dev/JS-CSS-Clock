@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: linear-gradient(125deg, #cc95c0, #dbd4b4, #7aa1d2);
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+}
+.container .clock {
+    height: 250px;
+    width: 250px;
+    border: #0099ff solid 15px;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    background:  url("clock2.png") top left no-repeat, linear-gradient(to bottom, #ffe9ae71 50%, #ffe9ae71 50%);
+    background-size: cover;
+}
+.container .clock .sec {
+    width: 54%;
+    height: 3px;
+    background: linear-gradient(to left, #353b48 90%,transparent 50%);
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    transform-origin: 92%;
+    transition: 100ms;
+}
+.container .clock .min {
+    width: 54%;
+    height: 4px;
+    background: linear-gradient(to left, #8c7ae6 70%,transparent 50%);
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    transform-origin: 92%;
+    transition: 100ms;
+}
+.container .clock .hour {
+    width: 54%;
+    height: 5px;
+    background: linear-gradient(to left, #44bd32 50%,transparent 50%);
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    transform-origin: 92%;
+    transition: 100ms;
+}
+
+.container p {
+    font-family: Impact, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5em;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.container p #sec {
+    color: #353b48;
+}
+
+.container p #min {
+    color: #8c7ae6;
+}
+
+.container p #hour {
+    color: #38962c;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Js and Css Clock</title>
+</head>
+<body>
+    <div class="container">
+        <div class="clock">
+            <div class="hour"></div>
+            <div class="min"></div>
+            <div class="sec" id="myDIV"></div>
+        </div>
+        <p><span id="hour">00</span> : <span id="min">00</span> : <span id="sec">00</span></p>
+    </div>
+
+
+    <script>
+        const secHand = document.querySelector(".sec");
+        const minHand = document.querySelector(".min");
+        const hourHand = document.querySelector(".hour");
+
+        function setDate () {
+            const date = new Date();
+
+            // Second
+            const sec = date.getSeconds();
+            var secDegree = ( (sec / 60) * 360 ) + 90;
+            console.log(sec);
+            if (secDegree == 90) {
+                secHand.style.transition = "1ms";
+                secHand.style.transform = `rotate(${secDegree}deg)`;    
+            } else {
+                secHand.style.transition = "100ms";
+                secHand.style.transitionTimingFunction = "cubic-bezier(0.06, 3.14, 0.58, 1)";
+                secHand.style.transform = `rotate(${secDegree}deg)`;
+            }
+            document.getElementById("sec").innerText = prependZero(sec);
+
+            // Minute
+            const min = date.getMinutes();
+            const minDegree = ( (min / 60) * 360 ) + 90;
+
+            minHand.style.transform = `rotate(${minDegree}deg)`;
+            document.getElementById("min").innerText = prependZero(min);
+            
+
+            // Hours
+            const hour = date.getHours();
+            const hourDegree = ( (hour / 12) * 360 ) + 90 + (minDegree - 90) / 12;
+
+            hourHand.style.transform = `rotate(${hourDegree}deg)`;
+            document.getElementById("hour").innerText = prependZero(hour);
+
+        }
+
+        setInterval( setDate, 1000 );
+
+        function prependZero(number) {
+            if (number < 10)
+                return "0" + number;
+            else
+                return number;
+        }
+    </script>
+</body>
+</html>
